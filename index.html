@@ -3,20 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angry Birds Game</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Angry Birds - Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container"></div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🐦 Angry Birds 🐷</h1>
+            <div class="controls">
+                <button class="btn" id="pauseBtn">⏸️ Pause</button>
+                <button class="btn" id="restartBtn">🔄 Restart</button>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-wrapper">
+            <!-- Canvas -->
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+            <!-- Stats Panel -->
+            <div class="stats-panel">
+                <div class="stat">
+                    <div class="label">Score</div>
+                    <div class="value" id="score">0</div>
+                </div>
+                <div class="stat">
+                    <div class="label">Level</div>
+                    <div class="value" id="level">1</div>
+                </div>
+                <div class="stat">
+                    <div class="label">Birds Left</div>
+                    <div class="value" id="birdsLeft">3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h2>📋 How to Play</h2>
+            <ul>
+                <li><strong>Drag</strong> a bird backward to aim</li>
+                <li><strong>Release</strong> to launch at the pigs</li>
+                <li><strong>Destroy</strong> all pigs to complete the level</li>
+                <li><strong>Use Strategy</strong> - different birds have different power</li>
+                <li><strong>Pause</strong> the game anytime with the pause button</li>
+                <li><strong>Score Points</strong> for destroying structures and pigs</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal hidden" id="gameOverModal">
+        <div class="modal-content">
+            <div class="modal-title" id="gameOverTitle">🎉 Level Complete!</div>
+            <div class="modal-message" id="gameOverMessage">Great job! All pigs defeated!</div>
+            
+            <div class="stats-display">
+                <div class="stat-item">
+                    <span class="stat-label">Final Score:</span>
+                    <span class="stat-value" id="finalScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Level Reached:</span>
+                    <span class="stat-value" id="finalLevel">1</span>
+                </div>
+            </div>
+
+            <button class="btn btn-large" id="playAgainBtn">🔄 Play Again</button>
+        </div>
+    </div>
+
+    <!-- Physics Engine -->
+    <script src="physics.js"></script>
     
-    <!-- Phaser 3 Game Framework -->
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
-    
-    <!-- Game Scripts -->
-    <script src="js/config.js"></script>
-    <script src="js/scenes/MenuScene.js"></script>
-    <script src="js/scenes/GameScene.js"></script>
-    <script src="js/scenes/WinScene.js"></script>
-    <script src="js/game.js"></script>
+    <!-- Game Logic -->
+    <script src="game.js"></script>
 </body>
 </html>
